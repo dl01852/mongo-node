@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    container_name: docker-node-mongo
+    restart: always
+    build: . # look in current directory for build file or
+    ports:
+      - '80:3000'
+    links:
+      - mongo # link the app to our mongo container(by service name)
+  mongo:
+    container_name: mongo
+    image: mongo # grab the offical mongo from dockerhub
+    ports:
+      - '27017:27017'
